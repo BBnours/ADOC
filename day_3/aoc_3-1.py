@@ -1,10 +1,5 @@
 import pandas as pd
 
-with open("day_3/aoc_3_input.txt", 'r') as f:
-    input_test = [line.rstrip() for line in f]
-df = pd.DataFrame()
-tobe_df = []
-gamma_rate = ""
 
 def trans_list(input_test):
     liste = []
@@ -29,6 +24,13 @@ def invert(gamma_rate):
     inverse_s = inverse_s.replace('0', '1')
     inverse_s = inverse_s.replace('2', '0')
     return int(inverse_s, 2)
+
+
+with open("day_3/aoc_3_input.txt", 'r') as f:
+    input_test = [line.rstrip() for line in f]
+df = pd.DataFrame()
+tobe_df = []
+gamma_rate = ""
 
 tobe_df = trans_list(input_test)
 df = pd.DataFrame(tobe_df)
