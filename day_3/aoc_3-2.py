@@ -55,9 +55,6 @@ def to_string(df):
         string = string + str(item)
     return string
 
-    
-
-
 with open("day_3/aoc_3_input.txt", 'r') as f:
     input_test = [line.rstrip() for line in f]
 
