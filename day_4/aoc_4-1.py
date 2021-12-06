@@ -1,6 +1,3 @@
-with open("day_4/aoc_4_input.txt", 'r') as f:
-    content = f.readlines()
-
 def get_drawn(content):
     numbers_to_drawn = []
     for idx, item in enumerate(content):
@@ -54,6 +51,9 @@ def extract(bundle, drawn):
 
 
 
+with open("day_4/aoc_4_input.txt", 'r') as f:
+    content = f.readlines()
+    
 drawn, content = get_drawn(content)
 grids = split_grids(content)
 

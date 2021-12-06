@@ -23,28 +23,20 @@ def split_grids(content):
 def bingo(grids, drawn,list_winner):
     for grid_number, grid in enumerate(grids):
         if grid_number not in list_winner:
-            for row in grid:
-                if (all(x in drawn for x in row)):
-                    list_winner.append(grid_number)
-                    print('list_winner len', len(list_winner) )
-                    print('grids len' ,len(grids) )
-                    print('list_winner', list_winner )
-                    if len(list_winner) == len(grids):
-                        print(row)
-                        print(grid_number)
-                        return drawn[-1], grid
             for i in range(5):
                 column = [item[i] for item in grid]
                 if (all(x in drawn for x in column)):
                     list_winner.append(grid_number)
-                    print('list_winner len', len(list_winner) )
-                    print('grids len' ,len(grids) )
-                    print('list_winner', list_winner )
                     if len(list_winner)== len(grids):
-                        print('list_winner len', len(list_winner) )
-                        print('grids len' ,len(grids) )
                         print(column)
                         print(grid_number+1)
+                        return drawn[-1], grid
+            for row in grid:
+                if (all(x in drawn for x in row)):
+                    list_winner.append(grid_number)
+                    if len(list_winner) == len(grids):
+                        print(row)
+                        print(grid_number)
                         return drawn[-1], grid
 
 
@@ -53,16 +45,13 @@ def calculate(last, unmarked):
     somme = 0
     last_number = int(last) 
     print('last_number',last_number) 
-    print('unmarked',unmarked)  
     for number in unmarked:
         somme = int(number) + somme
-    print('somme',somme)
     res = somme * last_number
     return res
 
 def extract(bundle, drawn):
     print(bundle[1])
-    print('drawn',drawn)
     flattened = [val for sublist in bundle[1] for val in sublist]
     unmark = list(set(flattened) - set(drawn))
     return unmark
@@ -70,15 +59,14 @@ def extract(bundle, drawn):
 drawn, content = get_drawn(content)
 grids = split_grids(content)
 
-i=0
 list_winner = []
+print('il y a ', len(grids), 'participants')
 for idx, item in enumerate(drawn):
     winner = bingo(grids,drawn[:idx],list_winner)
-    if winner:
-        print('il y a ', len(grids), 'participants')
-        print('list_winner',len(list_winner))
+    print('Pour l instant, il y a ', len(list_winner), 'gagnant')
+    print(list_winner)
+    if winner:  
         unmarked = extract(winner,drawn[:idx])
         print(calculate(winner[0], unmarked))
-        break;
 
 
