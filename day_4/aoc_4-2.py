@@ -28,15 +28,12 @@ def bingo(grids, drawn,list_winner):
                 if (all(x in drawn for x in column)):
                     list_winner.append(grid_number)
                     if len(list_winner)== len(grids):
-                        print(column)
-                        print(grid_number+1)
                         return drawn[-1], grid
+        if grid_number not in list_winner:
             for row in grid:
                 if (all(x in drawn for x in row)):
                     list_winner.append(grid_number)
                     if len(list_winner) == len(grids):
-                        print(row)
-                        print(grid_number)
                         return drawn[-1], grid
 
 
@@ -63,8 +60,6 @@ list_winner = []
 print('il y a ', len(grids), 'participants')
 for idx, item in enumerate(drawn):
     winner = bingo(grids,drawn[:idx],list_winner)
-    print('Pour l instant, il y a ', len(list_winner), 'gagnant')
-    print(list_winner)
     if winner:  
         unmarked = extract(winner,drawn[:idx])
         print(calculate(winner[0], unmarked))
