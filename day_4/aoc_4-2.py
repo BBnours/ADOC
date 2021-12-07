@@ -48,7 +48,6 @@ def calculate(last, unmarked):
     return res
 
 def extract(bundle, drawn):
-    print(bundle[1])
     flattened = [val for sublist in bundle[1] for val in sublist]
     unmark = list(set(flattened) - set(drawn))
     return unmark
@@ -57,7 +56,6 @@ drawn, content = get_drawn(content)
 grids = split_grids(content)
 
 list_winner = []
-print('il y a ', len(grids), 'participants')
 for idx, item in enumerate(drawn):
     winner = bingo(grids,drawn[:idx],list_winner)
     if winner:  
