@@ -138,8 +138,6 @@ def calcul_output(store, case):
     return big_digits
             
 
-
-
 content = get_input("")
 #For Test : Uncomment
 #content  = get_input("test")
